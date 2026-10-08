@@ -1,0 +1,36 @@
+services:
+  # 1. Backend REST API Service (Docker)
+  - type: web
+    name: nutrition-app-backend
+    env: docker
+    dockerfilePath: docker/Dockerfile.backend
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nutrition-db
+          property: connectionString
+
+  # 2. Frontend React + Nginx Service (Docker)
+  - type: web
+    name: nutrition-app-frontend
+    env: docker
+    dockerfilePath: docker/Dockerfile.frontend
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: nutrition-app-backend
+          property: host
+
+databases:
+  # 3. Managed PostgreSQL Database
+  - name: nutrition-db
+    databaseName: nutrition_db
+    user: postgres
+    plan: free
