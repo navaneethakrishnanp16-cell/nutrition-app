@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ShieldCheck, Flame } from 'lucide-react';
+import { Activity, ShieldCheck, Flame, UserCheck } from 'lucide-react';
 
 interface HeaderProps {
   onReset?: () => void;
@@ -25,17 +25,25 @@ export const Header: React.FC<HeaderProps> = ({ onReset }) => {
                 PRO v1.0
               </span>
             </div>
-            <p className="text-xs text-slate-400">Personalized Science-Based Daily Nutrition</p>
+            <p className="text-xs text-slate-400 flex items-center space-x-1.5 mt-0.5">
+              <span>Personalized Science-Based Daily Nutrition</span>
+            </p>
           </div>
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
-            <Flame className="w-4 h-4 text-emerald-400 animate-pulse" />
-            <span>Scientific Mifflin-St Jeor Engine</span>
+          {/* Creator Name Badge */}
+          <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500/10 via-slate-900 to-teal-500/10 border border-emerald-500/30 text-xs text-emerald-300 font-semibold shadow-md">
+            <UserCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+            <span>NAME: <strong className="text-white font-extrabold">Navaneetha Krishnan P</strong></span>
           </div>
 
-          <div className="flex items-center space-x-1.5 text-xs text-slate-400">
+          <div className="hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
+            <Flame className="w-4 h-4 text-emerald-400 animate-pulse" />
+            <span>Mifflin-St Jeor Engine</span>
+          </div>
+
+          <div className="hidden sm:flex items-center space-x-1.5 text-xs text-slate-400">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span className="hidden md:inline">Docker & Cloud Ready</span>
           </div>
