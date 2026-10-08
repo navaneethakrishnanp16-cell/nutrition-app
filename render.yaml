@@ -23,10 +23,7 @@ services:
     plan: free
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: nutrition-app-backend
-          property: host
+        value: /api
 
 databases:
   # 3. Managed PostgreSQL Database
