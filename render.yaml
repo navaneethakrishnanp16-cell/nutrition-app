@@ -32,5 +32,4 @@ databases:
   # 3. Managed PostgreSQL Database
   - name: nutrition-db
     databaseName: nutrition_db
-    user: postgres
     plan: free
